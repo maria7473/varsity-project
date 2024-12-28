@@ -1,5 +1,5 @@
 .open-sans-normal {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
     font-variation-settings:
@@ -182,8 +182,153 @@ footer input[type="text"],footer input[type="email"],footer textarea{
     height: 652px;
     margin-top: 135px;
   }
-  .title-para{
-    width: 998px;
-    height: 212px;
+  .title-para {
+    width: 100%;
+    max-width: 998px;
+    height: auto;
+    min-height: 212px;
     margin: 0 auto;
   }
+
+
+
+/* Dark Mode Toggle Switch */
+.dark-mode-toggle {
+  display: flex;
+  align-items: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #FD6E0A;
+  transition: .4s;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.slider i {
+  color: white;
+  font-size: 14px;
+}
+
+input:checked + .slider {
+  background-color: #2c3e50;
+}
+
+input:checked + .slider:before {
+  transform: translateX(30px);
+}
+
+/* Dark Mode Colors */
+:root {
+  --bg-color: #FFF8F3;
+  --text-color: #474747;
+  --title-color: #181818;
+  --skill-bg: white;
+  --banner-text: #757575;
+  --shadow-color: rgba(0, 0, 0, 0.06);
+  --header-gradient: linear-gradient(to bottom, #FFF8F3, #FFF8F3);
+}
+
+/* Update these variables in your dark mode section */
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --text-color: #e0e0e0;
+  --title-color: #FD6E0A;
+  --skill-bg: #2d2d2d;
+  --banner-text: #cccccc;
+  --shadow-color: rgba(253, 110, 10, 0.1);
+  --header-gradient: linear-gradient(to bottom, #1a1a1a, #2d2d2d);
+}
+
+/* Add these styles to make sure everything in dark mode is visible */
+[data-theme="dark"] {
+  background-color: #1a1a1a;
+}
+
+[data-theme="dark"] .header {
+  /* Keep the background images visible in dark mode */
+  background-image: url(../images/developer.png), url(../images/header_bg.png);
+  background-color: #1a1a1a;
+  background-blend-mode: luminosity;
+}
+
+[data-theme="dark"] .banner-title,
+[data-theme="dark"] .nav-title {
+  color: #FD6E0A;
+}
+
+[data-theme="dark"] .banner-description {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .about {
+  background-color: #2d2d2d;
+}
+
+[data-theme="dark"] .item-title,
+[data-theme="dark"] .item-description {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] footer {
+  background-color: #2d2d2d;
+}
+
+[data-theme="dark"] .footer-column p,
+[data-theme="dark"] .section-description {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .experience-title {
+  color: #FD6E0A;
+}
+
+[data-theme="dark"] .experience-description,
+[data-theme="dark"] .experience-sub-title {
+  color: #cccccc;
+}
+
+/* Add smooth transitions for background changes */
+body, .header, .about, footer {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
